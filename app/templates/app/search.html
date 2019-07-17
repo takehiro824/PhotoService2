@@ -1,0 +1,38 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<table>
+<form action="{% url 'app:search' %}" metohd="post">
+{% csrf_token %}
+{{form}}
+<tr><th></th><td><input type="submit" value="click"></td></tr>
+</form>
+</table>
+</hr>
+<table>
+   <tr>
+     <th>data</th>
+     <th></th>
+     <th></th>
+   </tr>
+  {% for item in data %}
+    <tr>
+      <td>{{item.username}}</td>
+      <td><a href="{% url 'app:add' %}?name={{photo.user}}">friend</a></td>
+    </tr>
+  {% endfor %}
+
+  <body>
+  <div class="animsition">
+    <a href="{% url 'app:users_detail' request.user.id %}" class="animsition-link">animsition link 1</a>
+    <a href="./page2" class="animsition-link">animsition link 2</a>
+  </div>
+</body>
+</table>
+
+
+
+
+{% endblock %}
+

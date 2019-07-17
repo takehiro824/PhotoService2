@@ -15,5 +15,9 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('signup/', views.signup, name='signup'), 
     path('share/<int:share_id>', views.share, name='share'),
-
+    path('good/<int:good_id>', views.good, name='good'),
+    path('photos/<int:pk>/edit/', views.photos_edit, name='photos_edit'),
+    path('add', views.add, name='add'),
+    path('search', views.search, name='search'),
+    path('photos/<int:pk>/comment/', views.photos_comment, name='photos_comment')
 ]

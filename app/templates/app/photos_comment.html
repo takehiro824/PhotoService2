@@ -1,0 +1,16 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<a href="{% url 'app:photos_detail' photo.id %}">詳細ページに戻る</a>
+
+<form action="{% url 'app:photos_comment' photo.id %}" method="POST" enctype="multipart/form-data">
+  <p><label for="com">コメント</label></p>
+  {% csrf_token %}
+  <textarea name="text" id="com" cols="30" rows="10"></textarea>
+  <button type="submit">投稿</button>
+</form>
+
+
+
+{% endblock %}

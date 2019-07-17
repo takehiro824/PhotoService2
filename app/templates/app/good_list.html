@@ -1,0 +1,23 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<div class="tweet-info">
+    <a href="{% url 'app:users_detail' photo.user.id %}">
+      <span>{{ photo.user }}</span>
+    </a>
+  </div>
+  <div class='tweet-content'>
+    <div class='tweet-content-main'>
+      {{ photo.comment }}
+    </div>
+  </div>
+  {% if photo.image %}
+  <div class="photo">
+    <a href="{% url 'app:photos_detail' photo.id %}">
+      <img src="{{ photo.image.url }}" class="photo-img">
+    </a>
+  </div>
+  {% endif %}
+
+{% endblock %}
