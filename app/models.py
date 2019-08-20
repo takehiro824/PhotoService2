@@ -21,9 +21,24 @@ class Photo(models.Model):
         ordering = ('-created_at',)
     
 class Good(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    photo = models.ForeignKey(Photo, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='good_user')
+    photo = models.ForeignKey(Photo, on_delete=models.CASCADE, related_name='good_photo')
 
     def __str__(self):
         return 'good for "' + str(self.photo) + '" (by ' + \
                 str(self.user) + ')'
+                
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comment_user')
+    photo = models.ForeignKey(Photo, on_delete=models.CASCADE, related_name='comment_photo')
+    text = models.TextField(max_length=1000, default='SOME STRING')
+    created_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+      ordering = ('-created_at',)
+
+
+
+class Friend(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='friend_owner')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='friend_user')

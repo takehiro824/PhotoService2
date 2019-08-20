@@ -2,26 +2,23 @@
 
 {% block content %}
 
-<h2 class="user-name">{{ user.username }}</h2>
-
-<div class="photo-container">
-{% for photo in photos %}
-        <div class="photo-info">
-          <a href="{% url 'app:users_detail' photo.user.id %}">{{ photo.owner }}</a>
-        </div>
-        {% if photo.image %} 
-        <div class="photo">
-          <a href="{% url 'app:photos_detail' photo.id %}"></a>
-            <img src="{{ photo.image.url }}" class="photo-img">
-        </a>
-        </div>
-        {% endif %}
-        <div class="photo-comment">
-          <a href="{% url 'app:photos_detail' photo.id %}">
-            {{ photo.comment }}
-          </a>
-        </div>
-{% endfor %}
+<h5>friend</h5>
+<div class="follow_detail">
+  <p>follow{{pan}}</p>
+  &ensp;<p>follwer{{ apple }}</p> 
 </div>
+
+<button class="open">button</button>
+<div class='panda'>
+  <h5>good一覧</h5>
+</div>
+  {% for item in good_user %}
+  <div class="tweet">
+    <span>{{ item.photo }}</span>
+  </div>
+  {% endfor %}
+</br>
+</br>
+{% include 'app/tweet.html' %}
 
 {% endblock %}

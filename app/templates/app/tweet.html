@@ -1,0 +1,53 @@
+<div class="photo-container">
+    {% for photo in photos %}
+      <div class="tweet">
+        <div class="clone">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <button class="dropdown-item" type="button"><a href="{% url 'app:photos_detail' photo.id %}">詳細</a></buttun>
+            {% if request.user == photo.user %}
+              <button class="dropdown-item" type="button"><a href="{% url 'app:photos_edit' photo.id %}">編集</a><buttun>
+              <button class="dropdown-item" type="button"><form method="post" action="{% url 'app:photos_delete' photo.id %}">{% csrf_token %}<button class="btn" type="submit" onclick='return confirm("本当に削除しますか？");'>削除</form></button>
+            {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <div class="tweet-info">
+          <a href="{% url 'app:users_detail' photo.user.id %}">
+            <span>{{ photo.user }}</span>
+          </a>
+        </div>
+        <div class='tweet-content'>
+          <div class='tweet-content-main'>
+            {{ photo.comment }}
+          </div>
+        </div>
+        {% if photo.image %}
+        <div class="photo">
+          <a href="{% url 'app:photos_detail' photo.id %}">
+            <img src="{{ photo.image.url }}" class="photo-img">
+          </a>
+        </div>
+        {% endif %}
+        <div class='tweet-date'>
+          {{photo.created_at}}
+        </div>
+        {% if photo.share_id > 0 %}
+        <hr class="share_line">
+        <p class="share_item_content">{{photo.get_share}}</P>
+        {% endif %}
+        <p class="message_owner">
+          <a href="{% url 'app:share' photo.id %}"><span class="photo_counter"><i class="fas fa-retweet"></i>{{photo.share_count}}</span></a>
+          <a href="{% url 'app:good' photo.id %}"><span class="photo_counter">&ensp;<i class="fas fa-heart"></i>{{photo.good_count}}</span></a>
+        </p>
+        {% if request.user != photo.user %}
+        <p class="tweet_detail">
+          <a href="{% url 'app:add' %}?name={{photo.user}}">friend</a>
+        </p>
+        {% endif %}
+        </div>
+  {% endfor %}
+  </div>
