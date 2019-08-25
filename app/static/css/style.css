@@ -142,6 +142,7 @@ header h1 {
 
 .comment{
   padding-bottom: 20px;
+  border-bottom: ridge 0.5px #555;
 }
 .comment_user {
   padding-bottom: 5px;
