@@ -6,7 +6,7 @@ from django.contrib.auth import views as auth_views
 
 app_name = 'app'
 urlpatterns = [
-    path('index', views.index, name='index'),
+    path('', views.index, name='index'),
     path('photos/new/', views.photos_new, name='photos_new'),
     path('photos/<int:pk>/', views.photos_detail, name='photos_detail'), 
     path('photos/<int:pk>/delete/', views.photos_delete, name='photos_delete'), 
