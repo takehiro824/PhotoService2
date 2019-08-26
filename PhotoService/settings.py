@@ -42,7 +42,7 @@ if not DEBUG:
     import django_heroku
     django_heroku.settings(locals())
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['serene-garden-33782.herokuapp.com']
 
 
 # Application definition
