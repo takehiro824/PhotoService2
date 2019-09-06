@@ -15,4 +15,4 @@ application = DjangoWhiteNoise(application)
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'PhotoService.settings')
 
-application = get_wsgi_application()
+
