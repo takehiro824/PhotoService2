@@ -42,7 +42,7 @@ if not DEBUG:
     import django_heroku
     django_heroku.settings(locals())
 
-ALLOWED_HOSTS = ['serene-garden-33782.herokuapp.com']
+
 
 
 # Application definition
@@ -153,6 +153,7 @@ LOGIN_REDIRECT_URL = 'app:index'
 LOGOUT_REDIRECT_URL = 'app:index'
 
 import dj_database_url
+ALLOWED_HOSTS = ['*']
 DATABASES['default'] = dj_database_url.config()
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
