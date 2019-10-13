@@ -34,8 +34,8 @@ def signup(request):
             input_password = form.cleaned_data['password1']
             new_user = authenticate(username=input_username, password=input_password)
             if new_user is not None:
-              login(request, new_user)
-              return redirect('app:users_detail', pk=new_user.pk)
+                login(request, new_user)
+                return redirect('app:users_detail', pk=new_user.pk)
     else:
         form = UserCreationForm()
     return render(request, 'app/signup.html', {'form': form})
@@ -66,12 +66,12 @@ def photos_detail(request, pk):
 def photos_edit(request, pk):
     photo = get_object_or_404(Photo, pk=pk)
     if request.method == "POST":
-      form = PhotoForm(request.POST,instance=photo)
-      if form.is_valid():
-        form.save()
+        form = PhotoForm(request.POST,instance=photo)
+        if form.is_valid():
+            form.save()
         return redirect('app:index')
     else:
-       form = PhotoForm(instance=photo)
+        form = PhotoForm(instance=photo)
     return render(request,'app/photos_edit.html',{'form': form, 'photo': photo})
 
 @require_POST

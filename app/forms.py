@@ -17,7 +17,7 @@ class AppliForm(ModelForm):
       super(AppliForm, self).__init__(*args, **kwargs)
     
 class SearchForm(forms.Form):
-  q = forms.CharField(label='キーワード')
+    q = forms.CharField(label='キーワード')
 
 
 
